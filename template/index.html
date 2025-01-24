@@ -8,24 +8,28 @@
 </head>
 <body>
     <nav class="navbar">
-        <a class="Ferreteria" href="">Ferreteria</a>
-        <a class="Comida" href="">Comida</a>
-        <a class="Mascotas" href="">Mascotas</a>
-        <a class="Vehiculos" href="">Vehiculos</a>
-        <a class="Hogar" href="">Hogar</a>
+        <div class="menu">
+            <a class="Ferreteria" href="">Ferreteria</a>
+            <a class="Comida" href="">Comida</a>
+            <a class="Mascotas" href="">Mascotas</a>
+            <a class="Vehiculos" href="">Vehiculos</a>
+            <a class="Hogar" href="">Hogar</a>
+        </div>
     </nav>
     
     <div class="producto-container">
         {% for producto in data %}
         <div class="hogar">
-            <img class="imagen" src="{{ url_for('static', filename='img/fondo.jpg') }}" alt="">
+            <img class="imagen" src="{{ url_for('static', filename='img/fondo2.jpg') }}" alt="">
             <div class="card-hogar">
                 <h1 class="title1">{{ producto.nombre }}</h1>
                 <p>{{ producto.descripcion }}</p>
-                <a href="">Ver Mas</a>
+                <a class="ver-mas-btn" href="">Ver Más</a>
             </div>
         </div>
         {% endfor %}
     </div>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>
