@@ -17,9 +17,7 @@ UPLOAD_FOLDER = 'static/uploads/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'jfif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Crear la carpeta de uploads si no existe
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
+
     
 app.register_blueprint(productos)
 app.register_blueprint(categorias)
