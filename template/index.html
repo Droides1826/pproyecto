@@ -15,12 +15,21 @@
         <a class="Hogar" href="">Hogar</a>
     </nav>
     
-    <div class="hogar">
-    <img class="imagen"  src="{{ url_for('static', filename='img/fondo.jpg') }}" alt="">
-    <div class="card-hogar">
-        <h1 class="title1">Productos para el hogar</h1>
-        <p>Encuentra los mejores productos para tu hogar</p>
-        <a href="">Ver Mas</a>
-    </div>    
+    
+    <div class="contenedor_hogar">
+        {% for producto in data %}
+        <div class="hogar">
+            <img class="imagen" src="{{ url_for('static', filename='img/fondo.jpg') }}" alt="">
+            <div class="card-hogar">
+                <h1 class="title1">{{ producto.nombre }}</h1>
+                <p>{{ producto.descripcion }}</p>
+                <a href="">Ver Mas</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    
 </body>
 </html>
+

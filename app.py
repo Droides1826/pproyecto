@@ -3,6 +3,7 @@ from utils.db import conexion
 from routes.productos import productos
 from routes.categorias import categorias
 
+
 app = Flask(__name__, template_folder='template')
 
 #conexion a la base de datos
@@ -14,19 +15,15 @@ conexion.init_app(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-@app.route('/productos_por_categoria/<int:id_categoria>', methods=['GET'])
-def productos_por_categoria(id_categoria):
     MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT p.id_producto, p.nombre, p.descripcion, p.precio, p.estado, c.nombre_categoria, p.cantidad FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria WHERE c.id_categoria = %s;', (id_categoria,))
+    MySQL.execute('SELECT p.id_producto, p.nombre, p.descripcion, p.precio, p.estado, c.nombre_categoria, p.cantidad FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria WHERE 1;')
     data = MySQL.fetchall()
     columnas = [desc[0] for desc in MySQL.description]
     productos = []
     for row in data:
         producto = dict(zip(columnas, row))
         productos.append(producto)
-    return jsonify(productos)
+    return render_template('index.html', data=productos)
 
 app.register_blueprint(productos)
 app.register_blueprint(categorias)
