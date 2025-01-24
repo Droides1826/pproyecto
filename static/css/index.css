@@ -55,6 +55,7 @@ body {
     flex: 1 0 21%; 
     margin: 0.625rem;
     font-family: Arial, Helvetica, sans-serif; 
+    
 }
 
 .imagen {
@@ -75,7 +76,7 @@ body {
     display: inline-block;
     margin-top: 0.625rem; 
     padding: 0.625rem 1.25rem; 
-    background-color: #007bff;
+    background-color: #2d6fb4;
     color: white;
     border-radius: 0.3125rem; 
     text-align: center;
@@ -89,6 +90,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 70px;
 }
 
 
@@ -117,4 +119,17 @@ body {
     width: 40px;
     border-radius: 50%;
 }
+.titulo3{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: -30px;
+    background-color: gray ;
+    border-radius: 30px;
+    
 
+    font-family: Arial, Helvetica, sans-serif;
+}
+.titulo4{
+    text-align: center;
+    
+}
