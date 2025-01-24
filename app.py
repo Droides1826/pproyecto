@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from utils.db import conexion
 from routes.productos import productos
 from routes.categorias import categorias
@@ -12,6 +12,9 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'pproyecto'
 conexion.init_app(app)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/productos_por_categoria/<int:id_categoria>', methods=['GET'])
 def productos_por_categoria(id_categoria):
