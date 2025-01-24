@@ -14,7 +14,15 @@ conexion.init_app(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    MySQL = conexion.connection.cursor()
+    MySQL.execute('SELECT p.id_producto, p.nombre, p.descripcion FROM productos p')
+    data = MySQL.fetchall()
+    columnas = [desc[0] for desc in MySQL.description]
+    productos = []
+    for row in data:
+        producto = dict(zip(columnas, row))
+        productos.append(producto)
+    return render_template('index.html', data=productos)
 
 @app.route('/productos_por_categoria/<int:id_categoria>', methods=['GET'])
 def productos_por_categoria(id_categoria):
