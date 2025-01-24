@@ -6,7 +6,7 @@
 }
 
 body {
-    font-size: 16px; 
+    font-size: 16px;
 }
 
 .navbar {
@@ -15,8 +15,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.625rem 1.25rem;
-    border-radius: 0.3125rem;
+    padding: 0.625rem 1.25rem; 
+    border-radius: 0.3125rem; 
     flex-wrap: wrap;
 }
 
@@ -39,12 +39,12 @@ body {
 }
 
 .hogar {
-    border: 0.0625rem solid #f4ecec; 
-    border-radius: 0.3125rem; 
-    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1); 
+    border: 0.0625rem solid #bdbbbb; 
+    border-radius: 0.3125rem;
+    box-shadow: 0 0.125rem 0.3125rem rgba(228, 226, 226, 0.1); 
     overflow: hidden;
-    margin: 1.25rem; 
-    max-width: 18.75rem; 
+    margin: 1.25rem;
+    max-width: 18.75rem;
     flex: 1 0 21%; 
     margin: 0.625rem; 
 }
@@ -63,11 +63,26 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.ver-mas-btn {
+    display: inline-block;
+    margin-top: 0.625rem; 
+    padding: 0.625rem 1.25rem; 
+    background-color: #007bff;
+    color: white;
+    border-radius: 0.3125rem; 
+    text-align: center;
+}
+
+.ver-mas-btn:hover {
+    background-color: #0056b3;
+}
+
 .producto-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+
 
 @media (max-width: 1200px) {
     .hogar {
@@ -83,18 +98,15 @@ body {
 
 @media (max-width: 768px) {
     .hogar {
-        flex: 1 0 100%; /* 1 item per row */
+        flex: 1 0 100%;
     }
 }
 
 @media (max-width: 768px) {
     .navbar .menu {
-        justify-content: center; 
+        justify-content: center; /* Center the menu items */
     }
     .navbar .menu a {
         padding: 0.625rem 0.3125rem; /* 10px 5px */
     }
-}
-.ver-mas-btn:hover {
-    background-color: #0056b3;
 }
