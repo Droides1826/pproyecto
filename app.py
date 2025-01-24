@@ -5,7 +5,7 @@ from routes.categorias import categorias
 
 app = Flask(__name__, template_folder='template')
 
-#conexion a la base de datos
+#conexion a la base de datoss
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
