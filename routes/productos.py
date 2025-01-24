@@ -13,6 +13,7 @@ def mostrar_productos():
     for row in data:
         producto = dict(zip(columnas, row))
         productos.append(producto)
+    MySQL.close()
     return jsonify(productos)
 
 @productos.route('/productos_por_categoria/<int:id_categoria>', methods=['GET'])
@@ -25,4 +26,5 @@ def productos_por_categoria(id_categoria):
     for row in data:
         producto = dict(zip(columnas, row))
         productos.append(producto)
+    MySQL.close()
     return jsonify(productos)

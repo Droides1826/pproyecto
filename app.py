@@ -23,6 +23,7 @@ def index():
     for row in data:
         producto = dict(zip(columnas, row))
         productos.append(producto)
+    MySQL.close()
     return render_template('index.html', data=productos)
 
 app.register_blueprint(productos)
