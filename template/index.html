@@ -22,12 +22,13 @@
     </nav>
 
     <div class="titulo3">
-        <h1>Productos recomendados del dia </h1>
+        <h1>Recomendaciones para Ti</h1>
     </div>
     
     <div class="producto-container">
         {% for producto in data %}
         <div class="hogar">
+            
             <img class="imagen" src="{{ url_for('static', filename='uploads/' ~ producto.nombre_imagen) }}" alt="">
             <div class="card-hogar">
                 <h1 class="title1">{{ producto.nombre }}</h1>

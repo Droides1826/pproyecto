@@ -2,7 +2,6 @@ from flask import Flask
 from utils.db import conexion
 from routes.productos import productos
 from routes.categorias import categorias
-import os
 
 app = Flask(__name__, template_folder='template')
 
