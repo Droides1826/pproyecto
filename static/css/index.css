@@ -46,11 +46,12 @@ body {
     margin: 1.25rem;
     max-width: 18.75rem;
     flex: 1 0 21%; 
-    margin: 0.625rem; 
+    margin: 0.625rem;
+    font-family: Arial, Helvetica, sans-serif; 
 }
 
 .imagen {
-    width: 100%;
+    width: 300px;
     height: auto;
 }
 
@@ -96,11 +97,6 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    .hogar {
-        flex: 1 0 100%;
-    }
-}
 
 @media (max-width: 768px) {
     .navbar .menu {
@@ -109,4 +105,8 @@ body {
     .navbar .menu a {
         padding: 0.625rem 0.3125rem; /* 10px 5px */
     }
+}
+.logo{
+    width: 40px;
+    border-radius: 50%;
 }
