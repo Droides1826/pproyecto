@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Compras</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.jpg') }}">
 </head>
 <body>
     <nav class="navbar">
+        <a>
+            <img class="logo" src="{{ url_for('static', filename='img/logo.jpg') }}" alt="">
+        </a>
         <div class="menu">
             <a class="Ferreteria" href="">Ferreteria</a>
             <a class="Comida" href="">Comida</a>
@@ -20,6 +24,7 @@
     <div class="producto-container">
         {% for producto in data %}
         <div class="hogar">
+            <center><h1>Oferta del dia</h1></center>
             <img class="imagen" src="{{ url_for('static', filename='uploads/' ~ producto.nombre_imagen) }}" alt="">
             <div class="card-hogar">
                 <h1 class="title1">{{ producto.nombre }}</h1>
