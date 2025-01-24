@@ -18,7 +18,7 @@
     <div class="producto-container">
         {% for producto in data %}
         <div class="hogar">
-            <img class="imagen" src="{{ url_for('static', filename='img/fondo.jpg') }}" alt="">
+            <img class="imagen" src="{{ url_for('static', filename='uploads/' ~ producto.nombre_imagen) }}" alt="">
             <div class="card-hogar">
                 <h1 class="title1">{{ producto.nombre }}</h1>
                 <p>{{ producto.descripcion }}</p>
