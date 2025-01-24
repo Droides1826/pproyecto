@@ -1,64 +1,112 @@
-/* body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-} */
 * {
     text-decoration: none;
- }
-.navbar{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+}
+
+.navbar {
     background-color: #333;
     color: white;
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
-    border-radius: 5px;
-
-}
-.Ferreteria{
-    color: white;
-}
-.Comida{
-    color: white;
-}
-.Mascotas{
-    color: white;
-}
-.Vehiculos{
-    color: white;
-}
-.Hogar{
-    color: white;
-}
-.hogar{
-    border: 1px solid #333;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin: 20px;
-    max-width: 300px;
-    flex: 1 0 21%; /* Adjust the percentage to control the number of items per row */
-    margin: 10px;
-}
-
-.imagen{
-    width: 100%;
-    height: auto;
-}
-.card-hogar {
-    padding: 15px;
-}
-.title1 {
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    
-}
-.producto-container {
-    display: flex;
+    align-items: center;
+    padding: 0.625rem 1.25rem; 
+    border-radius: 0.3125rem; 
     flex-wrap: wrap;
 }
 
+.navbar .menu {
+    display: flex;
+    gap: 1.25rem; 
+    margin-left: auto; 
+    flex-wrap: wrap; 
+}
+
+.navbar .menu a {
+    color: white;
+    padding: 0.625rem; 
+    font-size: 1rem; 
+}
+
+.Ferreteria, .Comida, .Mascotas, .Vehiculos, .Hogar {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hogar {
+    border: 0.0625rem solid #bdbbbb; 
+    border-radius: 0.3125rem;
+    box-shadow: 0 0.125rem 0.3125rem rgba(228, 226, 226, 0.1); 
+    overflow: hidden;
+    margin: 1.25rem;
+    max-width: 18.75rem;
+    flex: 1 0 21%; 
+    margin: 0.625rem; 
+}
+
+.imagen {
+    width: 100%;
+    height: auto;
+}
+
+.card-hogar {
+    padding: 0.9375rem; 
+}
+
+.title1 {
+    font-size: 1.25rem; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ver-mas-btn {
+    display: inline-block;
+    margin-top: 0.625rem; 
+    padding: 0.625rem 1.25rem; 
+    background-color: #007bff;
+    color: white;
+    border-radius: 0.3125rem; 
+    text-align: center;
+}
+
+.ver-mas-btn:hover {
+    background-color: #0056b3;
+}
+
+.producto-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 
+@media (max-width: 1200px) {
+    .hogar {
+        flex: 1 0 30%; 
+    }
+}
+
+@media (max-width: 992px) {
+    .hogar {
+        flex: 1 0 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hogar {
+        flex: 1 0 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .menu {
+        justify-content: center; /* Center the menu items */
+    }
+    .navbar .menu a {
+        padding: 0.625rem 0.3125rem; /* 10px 5px */
+    }
+}
