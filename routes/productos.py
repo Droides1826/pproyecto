@@ -27,15 +27,14 @@ def agregar_producto():
         nombre = request.form['nombre']
         descripcion = request.form['descripcion']
         precio = request.form['precio']
-        estado = request.form['estado']
         id_categoria = request.form['id_categoria']
         cantidad = request.form['cantidad']
 
         cur = conexion.connection.cursor()
         cur.execute("""
-            INSERT INTO productos (nombre, descripcion, precio, estado, id_categoria, cantidad, nombre_imagen)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
-        """, (nombre, descripcion, precio, estado, id_categoria, cantidad, filename))
+            INSERT INTO productos (nombre, descripcion, precio,  id_categoria, cantidad, nombre_imagen)
+            VALUES (%s, %s, %s, %s, %s, %s, )
+        """, (nombre, descripcion, precio, id_categoria, cantidad, filename))
         conexion.connection.commit()
         cur.close()
 

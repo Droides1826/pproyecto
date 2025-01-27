@@ -37,6 +37,8 @@ def comida():
     for row in data:
         categoria = dict(zip(columnas, row))
         categorias.append(categoria)
+        if categoria == []:
+            return jsonify({'message': 'No hay productos en esta categoria'}), 404
     return render_template('comida.html', categorias=categorias)
 
 @vistas.route('/mascotas')
@@ -49,6 +51,8 @@ def mascotas():
     for row in data:
         categoria = dict(zip(columnas, row))
         categorias.append(categoria)
+        if categoria == []:
+            return jsonify({'message': 'No hay productos en esta categoria'}), 404
     return render_template('mascotas.html', categorias=categorias)
 
 @vistas.route('/vehiculos')

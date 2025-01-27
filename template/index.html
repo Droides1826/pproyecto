@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Compras</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='img/logo.jpg') }}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.jpg') }}" />
+  </head>
+  <body>
     <nav class="navbar">
-        <a href="/">
-            <img class="logo" src="{{ url_for('static', filename='img/logo.jpg') }}" alt="">
-        </a>
-        <div class="menu">
-            <a class="Hogar" href="">Hogar</a>
-            <a class="Comida" href="">Comida</a>
-            <a class="Mascotas" href="">Mascotas</a>
-            <a class="Vehiculos" href="">Vehiculos</a>
-            <a class="Ferreteria" href="">Ferreteria</a>
-        </div>
+      <a href="/">
+        <img
+          class="logo"
+          src="{{ url_for('static', filename='img/logo.jpg') }}"
+          alt=""
+        />
+      </a>
+      <div class="menu">
+        <a class="Hogar" href="/hogar">Hogar</a>
+        <a class="Comida" href="/comida">Comida</a>
+        <a class="Mascotas" href="/mascotas">Mascotas</a>
+        <a class="Vehiculos" href="/vehiculos">Vehiculos</a>
+        <a class="Ferreteria" href="ferreteria">Ferreteria</a>
+      </div>
     </nav>
 
     <div class="titulo3">
-        <h1>Recomendaciones para Ti</h1>
+      <h1>Recomendaciones para Ti</h1>
     </div>
-    
+
     <div class="producto-container">
-        {% for producto in productos %}
-        <div class="hogar">
-            
-            <img class="imagen" src="{{ url_for('static', filename='uploads/' ~ producto.nombre_imagen) }}" alt="">
-            <div class="card-hogar">
-                <h1 class="title1">{{ producto.nombre }}</h1>
-                <p>{{ producto.descripcion }}</p>
-                <a class="ver-mas-btn" href="">Ver Más</a>
-            </div>
+      {% for producto in productos %}
+      <div class="hogar">
+        <img
+          class="imagen"
+          src="{{ url_for('static', filename='uploads/' ~ producto.nombre_imagen) }}"
+          alt=""
+        />
+        <div class="card-hogar">
+          <h1 class="title1">{{ producto.nombre }}</h1>
+          <p>{{ producto.descripcion }}</p>
+          <a class="ver-mas-btn" href="">Más información aqui</a>
         </div>
-        {% endfor %}
+      </div>
+      {% endfor %}
     </div>
     <footer class="footer">
-        <p>&copy; 2025 Compras. Todos los derechos reservados.</p>
+      <p>&copy; 2025 Compras. Todos los derechos reservados.</p>
     </footer>
 
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-</body>
+  </body>
 </html>
