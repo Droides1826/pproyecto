@@ -20,3 +20,4 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     
 app.register_blueprint(productos)
 app.register_blueprint(categorias)
+

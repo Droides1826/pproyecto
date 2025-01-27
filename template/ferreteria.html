@@ -6,11 +6,14 @@
     <title>Ferreteria</title>
 </head>
 <body>
-    <h1 class="buscar-producto"></h1>
-    <form action=""></form>
-    
+    <h1 class="buscar-producto"> hola</h1>
+    <div class="busqueda">
+        <input type=" text" id="search" placeholder="Buscar producto">
+        <div id="results"></div>
+    </div>    
 </body>
 <footer class="footer">
     <p>&copy; 2025 Compras. Todos los derechos reservados.</p>
 </footer>
+<script src="{{ url_for('static', filename='js/ferreteria.js') }}"></script>
 </html> 
