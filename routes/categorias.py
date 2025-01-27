@@ -63,14 +63,3 @@ def vehiculos():
         categorias.append(categoria)
     return jsonify(categorias)
 
-@categorias.route('/ferreteria', methods=['GET'])
-def ferreteria():
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT * FROM `productos` WHERE id_categoria = 5;')
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    categorias = []
-    for row in data:
-        categoria = dict(zip(columnas, row))
-        categorias.append(categoria)
-    return jsonify(categorias)

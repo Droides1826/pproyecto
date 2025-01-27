@@ -8,7 +8,6 @@ productos = Blueprint('productos', __name__)
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg', 'gif'}
 
-# Ruta para agregar productos
 @productos.route('/producto', methods=['POST'])
 def agregar_producto():
     if 'image' not in request.files:
@@ -19,16 +18,12 @@ def agregar_producto():
         return jsonify({'message': 'No selected file'}), 400
 
     if file and allowed_file(file.filename):
-        # Obtener la extensión del archivo
         extension = file.filename.rsplit('.', 1)[1].lower()
-        # Crear un nombre único para el archivo
         filename = f"producto_{int(time.time())}.{extension}"
         filepath = os.path.join('static', 'uploads', filename)
         
-        # Guardar la imagen en el servidor
         file.save(filepath)
 
-        # Datos del producto
         nombre = request.form['nombre']
         descripcion = request.form['descripcion']
         precio = request.form['precio']
@@ -36,7 +31,6 @@ def agregar_producto():
         id_categoria = request.form['id_categoria']
         cantidad = request.form['cantidad']
 
-        # Insertar el producto en la base de datos
         cur = conexion.connection.cursor()
         cur.execute("""
             INSERT INTO productos (nombre, descripcion, precio, estado, id_categoria, cantidad, nombre_imagen)
@@ -48,18 +42,6 @@ def agregar_producto():
         return jsonify({'message': 'Producto agregado correctamente'}), 201
 
     return jsonify({'message': 'Invalid file format'}), 400
-
-@productos.route('/')
-def index():
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT p.id_producto, p.nombre, p.nombre_imagen, p.descripcion FROM productos p ORDER BY RAND() LIMIT 8')
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    productos = []
-    for row in data:
-        producto = dict(zip(columnas, row))
-        productos.append(producto)
-    return render_template('index.html', data=productos)
 
 @productos.route('/mostrar_productos', methods=['GET'])
 def mostrar_productos():
@@ -77,5 +59,17 @@ def productos_por_categoria(id_categoria):
     data = MySQL.fetchall()
     columnas = [desc[0] for desc in MySQL.description]
     productos = [dict(zip(columnas, row)) for row in data]
+    return jsonify(productos)
+
+@productos.route('/buscar_producto/<nombre>', methods=['GET'])
+def buscar_producto(nombre):
+    MySQL = conexion.connection.cursor()
+    MySQL.execute('SELECT * FROM productos WHERE nombre LIKE %s;', (f"{nombre}%",))
+    data = MySQL.fetchall()
+    columnas = [desc[0] for desc in MySQL.description]
+    productos = [dict(zip(columnas, row)) for row in data]
+    
+    if productos == []:
+        return jsonify({'message': 'Producto no encontrado'}), 404
     return jsonify(productos)
 
