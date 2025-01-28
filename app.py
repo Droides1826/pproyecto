@@ -1,11 +1,13 @@
-from flask import Flask
+from flask import Flask 
+from flask_cors import CORS
 from utils.db import conexion
 from routes.vistas import vistas
 from routes.productos import productos
 from routes.categorias import categorias
 
-app = Flask(__name__, template_folder='template')
 
+app = Flask(__name__, template_folder='template')
+CORS(app, resources={r"/": {"origins": "", "methods": ["GET", "POST", "PUT", "DELETE"], "allow_headers": ["Content-Type", "Authorization"]}})
 #conexion a la base de datoss
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
