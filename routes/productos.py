@@ -1,7 +1,8 @@
-from utils.db import conexion
-from flask import Blueprint, jsonify, render_template, request, url_for
 import os
 import time
+from utils.db import conexion
+from flask import Blueprint, jsonify, render_template, request, url_for
+from classes.productos import producto_clase
 
 productos = Blueprint('productos', __name__)
 
@@ -41,34 +42,4 @@ def agregar_producto():
         return jsonify({'message': 'Producto agregado correctamente'}), 201
 
     return jsonify({'message': 'Invalid file format'}), 400
-
-@productos.route('/mostrar_productos', methods=['GET'])
-def mostrar_productos():
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT p.id_producto, p.nombre, p.descripcion, p.precio, p.estado, c.nombre_categoria, p.cantidad FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria ORDER BY RAND() LIMIT 8;')
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    productos = [dict(zip(columnas, row)) for row in data]
-    return jsonify(productos)
-
-@productos.route('/productos_por_categoria/<int:id_categoria>', methods=['GET'])
-def productos_por_categoria(id_categoria):
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT p.id_producto, p.nombre, p.descripcion, p.precio, p.estado, c.nombre_categoria, p.cantidad FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria WHERE c.id_categoria = %s;', (id_categoria,))
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    productos = [dict(zip(columnas, row)) for row in data]
-    return jsonify(productos)
-
-@productos.route('/buscar_producto/<nombre>', methods=['GET'])
-def buscar_producto(nombre):
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT * FROM productos WHERE nombre LIKE %s;', (f"{nombre}%",))
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    productos = [dict(zip(columnas, row)) for row in data]
-    
-    if productos == []:
-        return jsonify({'message': 'Producto no encontrado'}), 404
-    return jsonify(productos)
 

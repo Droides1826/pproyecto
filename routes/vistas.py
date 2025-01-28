@@ -1,80 +1,37 @@
 from utils.db import conexion
-from flask import Blueprint, jsonify, render_template, request, url_for
+from classes.vistas import vistas_clase
+from classes.productos import producto_clase
+from flask import Blueprint, jsonify, render_template, request, url_for, current_app
 
 vistas = Blueprint('vistas', __name__)
 
 @vistas.route('/')
 def index():
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT p.id_producto, p.nombre, p.nombre_imagen, p.descripcion FROM productos p ORDER BY RAND() LIMIT 8')
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    productos = []
-    for row in data:
-        producto = dict(zip(columnas, row))
-        productos.append(producto)
-    return render_template('index.html', productos=productos)
+    vistas_obj = vistas_clase()
+    try:
+        productos = vistas_obj.index()
+        return jsonify(productos)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-@vistas.route('/ferreteria')
-def ferreteria():
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT * FROM `productos` WHERE `id_categoria`= 1;')
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    categorias = []
-    for row in data:
-        categoria = dict(zip(columnas, row))
-        categorias.append(categoria)
-    return render_template('ferreteria.html', categorias=categorias)
+@vistas.route('/home', methods=['GET', 'POST'])
+def home():
+    control_id = request.args.get('control_id')
+    vistas_obj = vistas_clase()
+    try:
+        productos = vistas_obj.home(control_id)
+        return jsonify(productos), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-@vistas.route('/comida')
-def comida():
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT * FROM `productos` WHERE `id_categoria`= 2;')
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    categorias = []
-    for row in data:
-        categoria = dict(zip(columnas, row))
-        categorias.append(categoria)
-        if categoria == []:
-            return jsonify({'message': 'No hay productos en esta categoria'}), 404
-    return render_template('comida.html', categorias=categorias)
+@vistas.route('/productos/<int:id_categoria>', methods=['GET'])
+def mostrar_producto_por_categoria(id_categoria):
+    productos_obj = producto_clase()
+    try:
+        productos = productos_obj.mostrar_producto_por_categoria(id_categoria)
+        return jsonify(productos)
+    except Exception as e:
+        return jsonify("error"), 500
 
-@vistas.route('/mascotas')
-def mascotas():
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT * FROM `productos` WHERE `id_categoria`= 3;')
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    categorias = []
-    for row in data:
-        categoria = dict(zip(columnas, row))
-        categorias.append(categoria)
-        if categoria == []:
-            return jsonify({'message': 'No hay productos en esta categoria'}), 404
-    return render_template('mascotas.html', categorias=categorias)
 
-@vistas.route('/vehiculos')
-def vehiculos():
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT * FROM `productos` WHERE `id_categoria`= 4;')
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    categorias = []
-    for row in data:
-        categoria = dict(zip(columnas, row))
-        categorias.append(categoria)
-    return render_template('vehiculos.html', categorias=categorias)
 
-@vistas.route('/hogar')
-def hogar():
-    MySQL = conexion.connection.cursor()
-    MySQL.execute('SELECT * FROM `productos` WHERE `id_categoria`= 5;')
-    data = MySQL.fetchall()
-    columnas = [desc[0] for desc in MySQL.description]
-    categorias = []
-    for row in data:
-        categoria = dict(zip(columnas, row))
-        categorias.append(categoria)
-    return render_template('hogar.html', categorias=categorias)
