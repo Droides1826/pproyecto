@@ -3,10 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.jpg') }}">
     <title>Mascotas</title>
 </head>
 <body>
+    <nav class="navbar">
+        <a href="/">
+            <img class="logo" src="{{ url_for('static', filename='img/logo.jpg') }}" alt="">
+        </a>
+        <div class="menu">
+            <a class="Hogar" href="/hogar">Hogar</a>
+            <a class="Comida" href="/comida">Comida</a>
+            <a class="Mascotas" href="mascotas">Mascotas</a>
+            <a class="Vehiculos" href="/vehiculos">Vehiculos</a>
+            <a class="Ferreteria" href="ferreteria">Ferreteria</a>
+        </div>
+    </nav>
+
+    <div class="titulo3">
+        <h1>Recomendaciones para Ti</h1>
+    </div>
     
+    <div class="producto-container">
+        {% for producto in productos %}
+        <div class="hogar">
+            
+            <img class="imagen" src="{{ url_for('static', filename='uploads/' ~ producto.nombre_imagen) }}" alt="">
+            <div class="card-hogar">
+                <h1 class="title1">{{ producto.nombre }}</h1>
+                <p>{{ producto.descripcion }}</p>
+                <a class="ver-mas-btn" href="">Más información aqui</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </body>
 <footer class="footer">
     <p>&copy; 2025 Compras. Todos los derechos reservados.</p>
