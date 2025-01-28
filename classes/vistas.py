@@ -6,7 +6,7 @@ class vistas_clase:
         self.conexion = db.conexion.connection.cursor()
     
     def index(self):
-        query = 'SELECT p.id_producto, p.nombre, p.nombre_imagen, p.descripcion FROM productos p ORDER BY RAND() LIMIT 8'
+        query = 'SELECT p.id_producto, p.nombre, p.precio, p.nombre_imagen, p.descripcion FROM productos p ORDER BY RAND() LIMIT 8'
         try:
             self.conexion.execute(query)
             data = self.conexion.fetchall()
