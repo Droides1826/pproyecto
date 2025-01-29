@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mascotas</title>
-</head>
-<body>
-    
-</body>
-<footer class="footer">
-    <p>&copy; 2025 Compras. Todos los derechos reservados.</p>
-</footer>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compras</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.jpg') }}" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="/">
+        <img
+          class="logo"
+          src="{{ url_for('static', filename='img/logo.jpg') }}"
+          alt=""
+        />
+      </a>
+      <div class="menu">
+        <a class="Hogar" href="/hogar?control_id=1" >Hogar</a>
+        <a class="Comida" href="/comida?control_id=2">Comida</a>
+        <a class="Mascotas" href="/mascotas?control_id=3">Mascotas</a>
+        <a class="Vehiculos" href="/vehiculos?control_id=4">Vehiculos</a>
+        <a class="Ferreteria" href="ferreteria?control_id=5">Ferreteria</a>
+      </div>
+    </nav>
+
+    <div class="titulo3">
+      <h1>Productos para mascotas</h1>
+    </div>
+
+    <div class="producto-container">
+      <!-- Los productos se agregarán aquí dinámicamente -->
+    </div>
+    <footer class="footer">
+      <p>&copy; 2025 Compras. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/consultas.js') }}" data-endpoint="/home?control_id=3"></script>
+  </body>
 </html>

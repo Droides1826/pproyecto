@@ -7,6 +7,30 @@ vistas = Blueprint('vistas', __name__)
 
 @vistas.route('/')
 def index():
+    return render_template('index.html')
+
+@vistas.route('/hogar')
+def hogar():
+    return render_template('hogar.html')
+
+@vistas.route('/comida')
+def comida():
+    return render_template('comida.html')
+
+@vistas.route('/mascotas')
+def mascotas():
+    return render_template('mascotas.html')
+
+@vistas.route('/vehiculos')
+def vehiculos():
+    return render_template('vehiculos.html')
+
+@vistas.route('/ferreteria')
+def ferreteria():
+    return render_template('ferreteria.html')
+
+@vistas.route('/monda')
+def monda():
     vistas_obj = vistas_clase()
     try:
         productos = vistas_obj.index()
