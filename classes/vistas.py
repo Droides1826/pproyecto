@@ -23,6 +23,23 @@ class vistas_clase:
         except Exception as e:
             return {"error": str(e)}, 500 
     
+    
+    def consultas(self):
+        query = '''
+            SELECT p.id_producto, p.nombre, p.nombre_imagen, p.id_categoria, 
+                c.nombre_categoria, p.descripcion, p.precio, p.cantidad
+            FROM productos p
+            JOIN categorias c ON p.id_categoria = c.id_categoria;
+        '''
+        try:
+            self.conexion.execute(query)
+            data = self.conexion.fetchall()
+            columnas = [desc[0] for desc in self.conexion.description]
+            productos = [dict(zip(columnas, row)) for row in data]
+            return productos  
+        except Exception as e:
+            return {"error": str(e)}, 500 
+    
     def home(self, control_id):
         query = 'SELECT * FROM productos WHERE id_categoria = %s;'
         try:
