@@ -47,9 +47,6 @@ def consulta():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-    
-
-
 @vistas.route('/productos/<int:id_categoria>', methods=['GET'])
 def mostrar_producto_por_categoria(id_categoria):
     productos_obj = producto_clase()
