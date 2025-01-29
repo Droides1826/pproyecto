@@ -6,18 +6,22 @@ class vistas_clase:
         self.conexion = db.conexion.connection.cursor()
     
     def index(self):
-        query = 'SELECT p.id_producto, p.nombre, p.nombre_imagen, p.descripcion FROM productos p ORDER BY RAND() LIMIT 8'
+        query = '''
+            SELECT p.id_producto, p.nombre, p.nombre_imagen, p.id_categoria, 
+                c.nombre_categoria, p.descripcion 
+            FROM productos p
+            JOIN categorias c ON p.id_categoria = c.id_categoria
+            ORDER BY RAND() 
+            LIMIT 8;
+        '''
         try:
             self.conexion.execute(query)
             data = self.conexion.fetchall()
             columnas = [desc[0] for desc in self.conexion.description]
-            productos = []
-            for row in data:
-                producto = dict(zip(columnas, row))
-                productos.append(producto)
-            return productos
+            productos = [dict(zip(columnas, row)) for row in data]
+            return productos  
         except Exception as e:
-            return jsonify({"error": str(e)}), 500
+            return {"error": str(e)}, 500 
     
     def home(self, control_id):
         query = 'SELECT * FROM productos WHERE id_categoria = %s;'
@@ -28,4 +32,4 @@ class vistas_clase:
             products = [dict(zip(columns, row)) for row in data]
             return products
         except Exception as e:
-            return jsonify({"error": str(e)}), 500
+            return {"error": str(e)}, 500
