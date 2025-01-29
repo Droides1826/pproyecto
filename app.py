@@ -6,6 +6,7 @@ from routes.productos import productos
 from routes.categorias import categorias
 
 
+
 app = Flask(__name__, template_folder='template')
 CORS(app, resources={r"/": {"origins": "", "methods": ["GET", "POST", "PUT", "DELETE"], "allow_headers": ["Content-Type", "Authorization"]}})
 #conexion a la base de datoss
