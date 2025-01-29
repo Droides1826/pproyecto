@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="card-hogar">
                         <h1 class="title1">${producto.nombre}</h1>
                         <p>${producto.descripcion}</p>
-                        <a class="ver-mas-btn" href="/categoria/${producto.id_categoria}?producto_id=${producto.id_producto}" data-nombre="${producto.nombre}" data-imagen="/static/uploads/${producto.nombre_imagen}" data-descripcion="${producto.descripcion}" data-precio="${producto.precio}">Más información aqui</a>
+                        <a class="ver-mas-btn" href="/${producto.nombre_categoria}?control_id=${producto.id_categoria}" data-descripcion="${producto.descripcion}" data-precio="${producto.precio}">Más información aqui</a>
                     </div>
                 `;
                 container.appendChild(productDiv);
