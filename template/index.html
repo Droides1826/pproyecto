@@ -21,11 +21,10 @@
       </a>
       <div class="menu">
         <a class="Hogar" href="/hogar?control_id=1">Hogar</a>
-        <a class="Comida" href="/comida">Comida</a>
-        <a class="Mascotas" href="/mascotas">Mascotas</a>
-        <a class="Vehiculos" href="/vehiculos">Vehiculos</a>
-        <a class="Ferreteria" href="/ferreteria">Ferreteria</a>        
-        <a class="admin" href="/admin">Administrador</a>        
+        <a class="Comida" href="/comida?control_id=2">Comida</a>
+        <a class="Mascotas" href="/mascotas?control_id=3">Mascotas</a>
+        <a class="Vehiculos" href="/vehiculos?control_id=4">Vehiculos</a>
+        <a class="Ferreteria" href="/ferreteria?control_id=5">Ferreteria</a>        
       </div>
     </nav>
 
@@ -39,16 +38,7 @@
     <footer class="footer">
       <p>&copy; 2025 Compras. Todos los derechos reservados.</p>
     </footer>
-      <div id="productModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h1 id="modalTitle"></h1>
-        <img id="modalImage" src="" alt="">
-        <p id="modalDescription"></p>
-        <p id="modalPrecio"></p>
-      </div>
-    </div>
 
-    <script src="{{ url_for('static', filename='js/index.js') }}" data-endpoint="/monda"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}" data-endpoint="/home"></script>
   </body>
 </html>
