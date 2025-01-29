@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h1 class="title1">${producto.nombre}</h1>
                         <p>${producto.descripcion}</p>
                         <p>${producto.precio}</p>
-                        <a class="ver-mas-btn" href="/$?control_id=${producto.id_categoria}">Más información aqui ${producto.id_producto}  </a>
+                        <a class="ver-mas-btn" href="/productos/${producto.id_categoria}">Más información aqui</a>
                     </div>
                 `;
                 container.appendChild(productDiv);
