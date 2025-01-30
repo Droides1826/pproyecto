@@ -1,4 +1,5 @@
 from utils.db import conexion
+from utils.utils import respuesta_json
 from classes.vistas import vistas_clase
 from classes.productos import producto_clase
 from flask import Blueprint, jsonify, render_template, request
@@ -43,7 +44,9 @@ def consulta():
     vistas_obj = vistas_clase()
     try:
         productos = vistas_obj.consultas()
-        return jsonify(productos)
+        
+        return respuesta_json(productos, "consulta exitosa", 200)
+        
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
@@ -52,6 +55,7 @@ def mostrar_producto_por_categoria(id_categoria):
     productos_obj = producto_clase()
     try:
         productos = productos_obj.mostrar_producto_por_categoria(id_categoria)
-        return jsonify(productos)
+        return respuesta_json(productos, "Consulta exitosa", 200)
     except Exception as e:
         return jsonify("error"), 500
+    

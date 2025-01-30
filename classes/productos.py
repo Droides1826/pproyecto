@@ -32,4 +32,11 @@ class producto_clase:
             producto = dict(zip(columnas, row))
             productos.append(producto)
         return productos
+    
+    def agregar_producto(self, nombre_producto, precio, id_categoria ):
+        query = 'INSERT INTO `productos` (`nombre`, `descripcion`, `precio`, `id_categoria`, `cantidad`, `nombre_imagen`) VALUES (%s, %s, %i, %i, %i, %s);'
+        self.conexion.execute(query, (nombre_producto, precio, id_categoria))
+        db.conexion.connection.commit()
+        return {"mensaje": "Producto agregado correctamente"}, 200
+    
 

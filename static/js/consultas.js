@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const scriptTag = document.querySelector('script[data-endpoint]');
     const endpoint = scriptTag.getAttribute('data-endpoint');
 
-    fetch(endpoint) // Ruta de tu API
+    fetch(endpoint) 
         .then(response => response.json())
         .then(data => {
             const container = document.querySelector('.producto-container');
-            container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
+            container.innerHTML = ''; 
             data.forEach(producto => {
                 const productDiv = document.createElement('div');
                 productDiv.classList.add('consultas');
