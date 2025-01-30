@@ -20,11 +20,11 @@
         />
       </a>
       <div class="menu">
-        <a class="Hogar" href="/hogar?control_id=1">Hogar</a>
-        <a class="Comida" href="/comida?control_id=2">Comida</a>
-        <a class="Mascotas" href="/mascotas?control_id=3">Mascotas</a>
-        <a class="Vehiculos" href="/vehiculos?control_id=4">Vehiculos</a>
-        <a class="Ferreteria" href="/ferreteria?control_id=5">Ferreteria</a>        
+        <a class="Hogar" href="/categoria/1">Hogar</a>
+        <a class="Comida" href="/categoria/2">Comida</a>
+        <a class="Mascotas" href="/categoria/3">Mascotas</a>
+        <a class="Vehiculos" href="/categoria/4">Vehiculos</a>
+        <a class="Ferreteria" href="/categoria/5">Ferreteria</a>        
       </div>
     </nav>
 
@@ -35,6 +35,19 @@
     <div class="producto-container">
       <!-- Los productos se agregarán aquí dinámicamente -->
     </div>
+
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1 id="modalTitle"></h1>
+        <img id="modalImage" src="" alt="">
+        <p id="modalDescription"></p>
+        <p id="modalPrecio"></p>
+        <p id="modalCantidad"></p>
+        <button id="buyButton">Comprar</button>
+      </div>
+    </div>
+    
     <footer class="footer">
       <p>&copy; 2025 Compras. Todos los derechos reservados.</p>
     </footer>
