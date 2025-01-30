@@ -1,57 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Compras</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/index.css') }}"
-    />
-    <link rel="icon" href="{{ url_for('static', filename='img/logo.jpg') }}" />
-  </head>
-  <body>
-    <nav class="navbar">
-      <a href="/">
-        <img
-          class="logo"
-          src="{{ url_for('static', filename='img/logo.jpg') }}"
-          alt=""
-        />
-      </a>
-      <div class="menu">
-        <a class="Hogar" href="/categoria/1">Hogar</a>
-        <a class="Comida" href="/categoria/2">Comida</a>
-        <a class="Mascotas" href="/categoria/3">Mascotas</a>
-        <a class="Vehiculos" href="/categoria/4">Vehiculos</a>
-        <a class="Ferreteria" href="/categoria/5">Ferreteria</a>        
-      </div>
-    </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"/>
 
-    <div class="titulo3">
-      <h1>Recomendaciones para Ti</h1>
-    </div>
-
-    <div class="producto-container">
-      <!-- Los productos se agregarán aquí dinámicamente -->
-    </div>
-
-    <div id="productModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h1 id="modalTitle"></h1>
-        <img id="modalImage" src="" alt="">
-        <p id="modalDescription"></p>
-        <p id="modalPrecio"></p>
-        <p id="modalCantidad"></p>
-        <button id="buyButton">Comprar</button>
-      </div>
+</head>
+<body>
+    <div class="tituloo">
+        <h1 class="titulo-añadir">Añadir producto nuevo</h1>
     </div>
     
-    <footer class="footer">
-      <p>&copy; 2025 Compras. Todos los derechos reservados.</p>
-    </footer>
+    <form class="contenedor-formu">
+        <div class="contenido-form">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Añadir nombre del producto:</label>
+                <input type="name" class="form-control" id="exampleFormControlInput1">
+                <label for="exampleFormControlInput1">Descripcion del producto:</label>
+                <input type="descripcion" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Categoría del producto</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                <option>Hogar</option>
+                <option>Comida</option>
+                <option>Mascotas</option>
+                <option>Vehiculos</option>
+                <option>Ferreteria</option>
+                </select>
+            </div>
+            <div class="precio-cantidad">
+                <label for="exampleFormControlInput1">Precio:</label>
+                <input type="number" class="form-precio" >
 
-    <script src="{{ url_for('static', filename='js/index.js') }}" data-endpoint="/home"></script>
-  </body>
+                <label for="exampleFormControlInput1">Cantidad:</label>
+                <input type="number" class="form-cantidad">
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Agregar foto del producto</label>
+                <input type="file" class="form-imagen" id="exampleFormControlFile1">
+            </div>
+            <div class="boton">
+                <button  type="submit" class="btn-agregar">Añadir</button>
+            </div>
+        </div>
+    </form>
+</body>
 </html>

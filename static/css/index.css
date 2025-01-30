@@ -261,3 +261,54 @@ body.modal-open .modal {
 #buyButton:hover {
     background-color: #45a049;
 }
+.contenedor-formu{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  
+}
+.contenido-form{
+    flex-direction: column;
+    background-color: rgb(144, 183, 255);
+    width: 500px;
+    border-radius: 10px;
+    padding: 17px;
+}
+.btn-agregar {
+    width: 80px;
+    height: 35px;
+    background-color: blue;
+    border-radius: 25px;
+    color: white;
+    border: transparent;
+    font-size: 15px;
+    
+}
+.boton{
+    display: flex;
+    justify-content: flex-end;
+}
+.form-precio{
+    width: 100px;
+    margin-top: 15px;
+}
+.form-imagen{
+    margin-top: 13px;
+}
+.form-group{
+    margin-top: 13px;
+}
+.form-cantidad{
+    width: 100px;
+
+}
+.precio-cantidad{
+    display: flex;
+    flex-direction: column;
+    
+}
+.tituloo{
+    display: flex;
+    justify-content: center;
+
+}
