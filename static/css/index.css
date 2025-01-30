@@ -196,3 +196,68 @@ body {
     margin: 0.625rem;
     font-family: Arial, Helvetica, sans-serif; 
 }
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    pointer-events: auto; /* Enable pointer events for the modal */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%; /* Could be more or less, depending on screen size */
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Disable pointer events for the background when modal is open */
+body.modal-open {
+    pointer-events: none;
+    overflow: hidden;
+}
+
+body.modal-open .modal {
+    pointer-events: auto;
+}
+#buyButton {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#buyButton:hover {
+    background-color: #45a049;
+}

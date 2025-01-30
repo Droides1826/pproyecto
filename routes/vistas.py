@@ -38,18 +38,6 @@ def home():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@vistas.route('/consulta', methods=['GET', 'POST'])
-def consulta():
-    vistas_obj = vistas_clase()
-    try:
-        productos = vistas_obj.consultas()
-        return jsonify(productos)
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    
-    
-
-
 @vistas.route('/productos/<int:id_categoria>', methods=['GET'])
 def mostrar_producto_por_categoria(id_categoria):
     productos_obj = producto_clase()

@@ -7,10 +7,11 @@ class vistas_clase:
     
     def index(self):
         query = '''
-            SELECT p.id_producto, p.nombre, p.nombre_imagen, p.id_categoria, 
-                c.nombre_categoria, p.descripcion 
+            SELECT p.id_producto, p.nombre, p.nombre_imagen, p.id_categoria, precio,
+                c.nombre_categoria, p.descripcion, p.cantidad
             FROM productos p
             JOIN categorias c ON p.id_categoria = c.id_categoria
+            WHERE p.cantidad > 0
             ORDER BY RAND() 
             LIMIT 8;
         '''
@@ -29,7 +30,7 @@ class vistas_clase:
             SELECT p.id_producto, p.nombre, p.nombre_imagen, p.id_categoria, 
                 c.nombre_categoria, p.descripcion, p.precio, p.cantidad
             FROM productos p
-            JOIN categorias c ON p.id_categoria = c.id_categoria;
+            JOIN categorias c ON p.id_categoria = c.id_categoria WHERE p.cantidad > 0;
         '''
         try:
             self.conexion.execute(query)
